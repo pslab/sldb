@@ -13,18 +13,21 @@ How to build and execute.
 	$ ./bin/dbg
 	
 Hack the eclipse plugin.
-    1. download the eclipse plugin, "org.eclipse.jdt.launching"
+    1. download the eclipse plugin, "org.eclipse.jdt.debug"
+       link : http://git.eclipse.org/c/jdt/eclipse.jdt.debug.git
 
-    2. open java source file : org.eclipse.jdt.internal.launching.StandardVMDebugger.java
+	2. unzip and set the directory for the package "org.eclipse.jdt.launching"
+
+    3. open java source file : org.eclipse.jdt.internal.launching.StandardVMDebugger.java
     
-    3. search the codes :
+    4. search the following code :
         String program= constructProgramString(config);
         
         List<String> arguments= new ArrayList<String>(12);
 
         arguments.add(program);
         
-    4. replace the scodes to :
+    5. replace it with the following code :
         /* Jikes DBG */
         String program = System.getProperty("jikesdbg.home") + System.getProperty("file.separator") + "dbg"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         // String program= constructProgramString(config);
@@ -32,19 +35,22 @@ Hack the eclipse plugin.
         List<String> arguments = new ArrayList<String>(12);
 
         arguments.add(program);
+
 	
 How to launch with Eclipse
-    1. In Eclipse,
+	1. Import the project 'org.eclipse.jdt.launching".
+
+    2. In Eclipse,
         Run -> Run configuration -> Eclipse Application -> Arguments -> VM Arguments:
         add "-Djikesdbg.home=~/workspace/JikesDBG/bin"
 
-    2. Run Eclipse application
+    3. Open the plugin.xml in the project, and run a new eclipse by clicking the "run" icon
 
-    3. In new Eclipse application,
+    4. In new Eclipse application,
         Open Java Perspective.
         
         Run -> Debug configuration -> Java Application -> Arguments -> VM Arguments:
         add "-vmpath ~/JikesRVM/dist/production_x86_64-linux/JikesRVM -vmargs Test"
     
-    4. Debug Java application
+    5. Debug Java application
     
