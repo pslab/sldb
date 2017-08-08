@@ -16,7 +16,7 @@ Hack the eclipse plugin.
     1. download the eclipse plugin, "org.eclipse.jdt.debug"
        link : http://git.eclipse.org/c/jdt/eclipse.jdt.debug.git
 
-	2. unzip and set the directory for the package "org.eclipse.jdt.launching"
+    2. unzip and set the directory for the package "org.eclipse.jdt.launching"
 
     3. open java source file : org.eclipse.jdt.internal.launching.StandardVMDebugger.java
     
@@ -38,7 +38,7 @@ Hack the eclipse plugin.
 
 	
 How to launch with Eclipse
-	1. Import the project 'org.eclipse.jdt.launching".
+    1. Import the project 'org.eclipse.jdt.launching".
 
     2. In Eclipse,
         Run -> Run configuration -> Eclipse Application -> Arguments -> VM Arguments:
