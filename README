@@ -1,0 +1,49 @@
+Dependency
+	g++ > 4.8.1
+
+How to build and execute.
+
+	$ aclocal
+	$ autoheader
+	$ autoconf
+	$ automake --add-missing
+	$ ./configure
+	$ make
+	$ ./src/a.out
+	
+Hack the eclipse plugin.
+    1. download the eclipse plugin, "org.eclipse.jdt.launching"
+
+    2. open java source file : org.eclipse.jdt.internal.launching.StandardVMDebugger.java
+    
+    3. search the codes :
+        String program= constructProgramString(config);
+        
+        List<String> arguments= new ArrayList<String>(12);
+
+        arguments.add(program);
+        
+    4. replace the scodes to :
+        /* Jikes DBG */
+        String program = System.getProperty("jikesdbg.home") + System.getProperty("file.separator") + "dbg"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        // String program= constructProgramString(config);
+
+        List<String> arguments = new ArrayList<String>(12);
+
+        arguments.add(program);
+	
+How to launch with Eclipse
+    1. In Eclipse,
+        Run -> Run configuration -> Eclipse Application -> Arguments -> VM Arguments:
+        add "-Djikesdbg.home=~/workspace/JikesDBG/bin"
+
+    2. Run Eclipse application
+
+    3. In new Eclipse application,
+        Open Java Perspective.
+        
+        Run -> Debug configuration -> Java Application -> Arguments -> VM Arguments:
+        add "-vmpath ~/JikesRVM/dist/production_x86_64-linux/JikesRVM -vmargs Test"
+    
+    4. Debug Java application
+    
