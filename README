@@ -10,7 +10,7 @@ How to build and execute.
 	$ automake --add-missing
 	$ ./configure
 	$ make
-	$ ./src/a.out
+	$ ./bin/dbg
 	
 Hack the eclipse plugin.
     1. download the eclipse plugin, "org.eclipse.jdt.launching"
